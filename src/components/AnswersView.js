@@ -14,7 +14,7 @@ const AnswersView = ({allDataIn,noSmokerAnswers, dataNoSmokerSub, user, setShowT
         setHidden(true)
         setNoSmokerAnswers(true)
         console.log(user)
-       await axios.post(`http://localhost:8080/email-builder?user=${user}&dataSmokerSub=${dataNoSmokerSub}&allDataIn=${allDataIn}`)
+       await axios.post(`https://payload-demo-tpm.herokuapp.com/email-builder?user=${JSON.stringify(user)}&dataNoSmokerSub=${JSON.stringify(dataNoSmokerSub)}&allDataIn=${JSON.stringify(allDataIn)}`)
         .then((res) => {
             console.log(res.status)
         })
