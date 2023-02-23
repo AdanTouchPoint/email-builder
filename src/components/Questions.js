@@ -105,6 +105,7 @@ const Questions = ({
                 <Form.Control plaintext 
                 onChange={handleText}
                 name={"question3"}
+                placeholder={"type here"}
                 />
               </Col>
               legislation will lead to
@@ -112,6 +113,7 @@ const Questions = ({
                 <Form.Control  plaintext
                 onChange={handleText}
                 name={"question31"}
+                placeholder={"type here"}
                 />
               </Col>
               as well as any other concerns you have.
