@@ -6,7 +6,7 @@ import Alert from "react-bootstrap/Alert";
 import { Link, animateScroll as scroll } from "react-scroll";
 //const cryptoRandomString = require("crypto-random-string");
 
-const RegisterForm = ({user, setUser, hidden, smokerSub, setSmokerSub, setNoSmokerSub}) => {
+const RegisterForm = ({setShowQuestions,showQuestions,user, setUser, hidden, smokerSub, setSmokerSub, setNoSmokerSub}) => {
     const [validated, setValidated] = useState(false);
     const [error, setError] = useState(false)
     const handleChange = e => {
@@ -32,16 +32,11 @@ const RegisterForm = ({user, setUser, hidden, smokerSub, setSmokerSub, setNoSmok
             return
         }
         setError(false)
-        //const randomId = cryptoRandomString({type: 'distinguishable', length: 10})
-        user.id = 'randomId';
+
         console.log(user)
-        if (smoker === "1") {
-            setSmokerSub(false)
+       
+            setShowQuestions(false)
             scroll.scrollToBottom();
-        } else {
-            setNoSmokerSub(false)
-            scroll.scrollToBottom();
-        }
 
     }
     return (

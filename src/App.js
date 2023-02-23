@@ -7,7 +7,8 @@ import AnswersView from "./components/AnswersView";
 import AnswersViewSmoker from "./components/AnswersViewSmoker";
 import ThankYou from "./components/ThankYou";
 import Footer from './components/Footer'
-
+import Questions from './components/Questions';
+import QuestionsView from './components/QuestionsView';
 function App() {
 
     const [usertweet, setUsertweet] = useState({
@@ -50,13 +51,15 @@ function App() {
     const [products, setProducts] = useState({
         products: ''
     })
+    const [questions, setQuestions] = useState([])
     const [hidden, setHidden] = useState(true)
     const [smokerSub, setSmokerSub] = useState(true)
     const [noSmokerSub, setNoSmokerSub] = useState(true)
     const [noSmokerAnswers, setNoSmokerAnswers] = useState(true)
     const [smokerAnswers, setSmokerAnswers] = useState(true)
     const [showThankYou, setShowThankYou] = useState(true)
-
+    const [showQuestions,setShowQuestions] = useState(true)
+    const [showQuestionsView,setShowQuestionsView] = useState(true)
     return (
         <div style={{display: 'flex', flexDirection: 'column', height: '100vh'}}>
             <header style={{background: '#e4eaf1'}}>
@@ -73,13 +76,13 @@ function App() {
                     setHidden={setHidden}
                 />
                 <RegisterForm
+                    hidden={hidden}
                     user={user}
                     setUser={setUser}
-                    hidden={hidden}
-                    setHidden={setHidden}
-                    smokerSub={smokerSub}
-                    setSmokerSub={setSmokerSub}
-                    setNoSmokerSub={setNoSmokerSub}
+                    showQuestions={showQuestions}
+                    setShowQuestions={setShowQuestions}
+                    questions={questions}
+                    setQuestions={setQuestions}
                 />
                 <SmokerSubmission
                     user={user}
@@ -91,6 +94,7 @@ function App() {
                     allDataIn={allDataIn}
                     products={products}
                     setProducts={setProducts}
+                    
                 />
                 <NoSmokerSubmission
                     user={user}
@@ -100,6 +104,27 @@ function App() {
                     setNoSmokerAnswers={setNoSmokerAnswers}
                     setAllDataIn={setAllDataIn}
                     allDataIn={allDataIn}
+                />
+                <Questions 
+                    user={user}
+                    setUser={setUser}
+                    showQuestions={showQuestions}
+                    setShowQuestions={setShowQuestions}
+                    questions={questions}
+                    setQuestions={setQuestions}
+                    setSmokerAnswers={setSmokerAnswers}
+                    showQuestionsView={showQuestionsView}
+                    setShowQuestionsView={setShowQuestionsView}
+                />
+                <QuestionsView
+                setHidden={setHidden}
+                user={user}
+                    questions={questions}
+                    setShowThankYou={setShowThankYou}
+                    showQuestions={showQuestions}
+                    setShowQuestions={setShowQuestions}
+                    showQuestionsView={showQuestionsView}
+                    setShowQuestionsView={setShowQuestionsView} 
                 />
                 <AnswersViewSmoker
                     user={user}
@@ -112,6 +137,8 @@ function App() {
                     setSmokerAnswers={setSmokerAnswers}
                     setAllDataIn={setAllDataIn}
                     allDataIn={allDataIn}
+                    questions={questions}
+                    setQuestions={setQuestions}
                 />
                 <AnswersView
                     user={user}

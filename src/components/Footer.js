@@ -9,7 +9,7 @@ const Footer = () => {
 
     return (
 <div className={"footer"}>
-            <Card.Footer>LegaliseVaping-2021</Card.Footer>
+            <Card.Footer>"Overton Corporation PTY LTD"</Card.Footer>
 
 </div>
 
