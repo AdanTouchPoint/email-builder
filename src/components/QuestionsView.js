@@ -12,7 +12,7 @@ const QuestionsView = ({
   showQuestionsView,
   setShowQuestionsView,
 }) => {
-  const { question1, question2, question3 } = questions;
+  const { question1, question2, question3,question31 } = questions;
   const {
     firstName,
     lastName,
@@ -50,6 +50,7 @@ const QuestionsView = ({
           <p>{question1}</p>
           <p>{question2}</p>
           <p>{question3}</p>
+          <p>{question31}</p>
           Sincerely,
           <p>
             {firstName} {lastName}
