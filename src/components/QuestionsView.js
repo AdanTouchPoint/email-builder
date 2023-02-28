@@ -12,11 +12,12 @@ const QuestionsView = ({
   showQuestionsView,
   setShowQuestionsView,
 }) => {
-  const { question1, question2, question3,question31 } = questions;
-  const {
-    firstName,
-    lastName,
-  } = user;
+  const { question1, question2, question3 } = questions;
+  const { firstName, lastName } = user;
+
+  const hoy = new Date();
+  const today = hoy.toDateString();
+  console.log(today);
   const click = async (e) => {
     e.preventDefault();
     setShowThankYou(false);
@@ -25,7 +26,9 @@ const QuestionsView = ({
     setShowQuestionsView(true);
     await axios
       .post(
-        `https://payload-demo-tpm.herokuapp.com/email-builder?questions=${JSON.stringify(questions)}&user=${JSON.stringify(user)}`
+        `https://payload-demo-tpm.herokuapp.com/email-builder?questions=${JSON.stringify(
+          questions
+        )}&user=${JSON.stringify(user)}`
       )
       .then((res) => {
         console.log(res.status);
@@ -35,7 +38,7 @@ const QuestionsView = ({
     <div
       hidden={showQuestionsView}
       className={"container"}
-      style={{justifyContent: 'center', display: "flex" }}
+      style={{ justifyContent: "center", display: "flex" }}
     >
       <div style={{ maxWidth: "700px", width: "100%" }}>
         <h2> Review your Answers</h2>
@@ -45,18 +48,27 @@ const QuestionsView = ({
           using the information you provided above.
         </p>
         <p>Your submission will be laid out as follows</p>
-       <div style={{textAlign:"left"}} >
-       <Card body>
-          <p>{question1}</p>
-          <p>{question2}</p>
-          <p>{question3}</p>
-          <p>{question31}</p>
-          Sincerely,
-          <p>
-            {firstName} {lastName}
-          </p>
-        </Card>
-       </div>
+        <div style={{ textAlign: "left" }}>
+          <Card body>
+           <p> 
+            {today} <br/>
+            Committee Secretariat Government Committee<br/>
+            Parliament Address Line 1 <br/>
+            Parliament Address Line 2 <br/>
+            Parliament Address Line 3<br/>
+            </p>
+            <p>
+              Submission by {firstName} {lastName} - {today}
+            </p>
+            <p>{question1}</p>
+            <p>{question2}</p>
+            <p>{question3}</p>
+            Sincerely,
+            <p>
+              {firstName} {lastName}
+            </p>
+          </Card>
+        </div>
         <p>If you are happy with your submission, click "Send Now" below</p>
         <Button onClick={click} className={"u-full-width"}>
           Send Now!

@@ -97,27 +97,20 @@ const Questions = ({
               rows={3}
             />
           </Form.Group>
-          <Row className="mb-3">
-            
-              3.- Tell the committee that you fear that opposing
-              
-              <Col >
-                <Form.Control plaintext 
-                onChange={handleText}
-                name={"question3"}
-                placeholder={"type here"}
-                />
-              </Col>
-              legislation will lead to
-              <Col>
-                <Form.Control  plaintext
-                onChange={handleText}
-                name={"question31"}
-                placeholder={"type here"}
-                />
-              </Col>
-              as well as any other concerns you have.
-          </Row>
+          <Form.Group controlId="question3">
+            <Form.Label>
+              3.- Explain in your own word what you believe the negative
+              ramifications would be if this legislation does not pass.
+            </Form.Label>
+            <Form.Control
+              required
+              as="textarea"
+              onChange={handleText}
+              name={"question3"}
+              rows={3}
+            />
+          </Form.Group>
+
           <Button onClick={click}>Next</Button>
         </Form>
       </div>
