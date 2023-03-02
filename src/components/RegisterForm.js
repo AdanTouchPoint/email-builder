@@ -18,6 +18,15 @@ const RegisterForm = ({
 }) => {
   const [validated, setValidated] = useState(false);
   const [error, setError] = useState(false);
+  const [tac, setTac] = useState(false)
+  
+  const handleTerms = (e) => {
+    if (e.target.checked === true) {
+      setTac(true)
+  } else {
+    setTac(false)
+  }
+  }
   const handleChange = (e) => {
     setUser({
       ...user,
@@ -37,6 +46,7 @@ const RegisterForm = ({
     email,
     smoker,
   } = user;
+
   const click = (e) => {
     e.preventDefault();
     const form = e.currentTarget;
@@ -46,6 +56,7 @@ const RegisterForm = ({
     }
     setValidated(true);
     if (
+      tac  === false ||
       submissionType.trim() === "" ||
       firstName.trim() === "" ||
       lastName.trim() === "" ||
@@ -59,9 +70,6 @@ const RegisterForm = ({
       return;
     }
     setError(false);
-
-    console.log(user);
-
     setShowQuestions(false);
     scroll.scrollToBottom();
   };
@@ -200,6 +208,16 @@ const RegisterForm = ({
               required
             />
           </Form.Group>
+          <Form.Group style={{textAlign: "justify"}} controlId="conditions">
+                <Form.Check
+                  name="conditions"
+                  onClick={handleTerms}
+                  required
+                  label={
+                    <a target={"_blank"} rel={"noreferrer"} href="https://www.overton.solutions/terms-conditions"> Accept Terms and conditions</a>
+                  }
+                />
+              </Form.Group>
           <Form.Group>
             <Button size={"lg"} onClick={click} className={"u-full-width"}>
               Save
